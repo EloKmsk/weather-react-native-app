@@ -1,12 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { 
+  Button, 
+  FlatList, 
+  SafeAreaView, 
+  ScrollView, 
+  StyleSheet, 
+  Text, 
+  Image,
+  TextInput, 
+  TouchableOpacity,
+  View } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
+import { useFonts } from 'expo-font';
+import axios from 'axios';
+import Today from './components/Today';
+
 
 export default function App() {
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Today></Today>
     </View>
   );
 }
@@ -14,8 +28,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#265ebf',
+    marginTop: 20,
   },
 });
