@@ -23,7 +23,7 @@ export default function Today() {
     const [icon, setIcon] = useState([]);
   
     useEffect(() => {
-      axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=50.4291723&lon=2.8319805&units=metric&lang=fr&exclude=minutely,hourly,alerts&appid=8c3a54c385c9c9d874d88f2cd6b3dda8')
+      axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=50.42893&lon=2.83183&units=metric&lang=fr&exclude=minutely,hourly,alerts&appid=4fb8f57eeca10e6f1b5391392c27142a')
       .then(res => {
         setTemp(res.data.daily[0].temp.day)
         setMintemp(res.data.daily[0].temp.min)
@@ -36,8 +36,8 @@ export default function Today() {
       <View style={styles.top}>
           <View style={styles.topleft}>
             <Text style={styles.text}>Today</Text>
-            <Text style={styles.text}>{temperature}</Text>
-            <Text style={styles.text}>{mintemperature}</Text>
+            <Text style={styles.textmain}>{temperature} C°</Text>
+            <Text style={styles.textmin}>{mintemperature} C°</Text>
           </View>
           <View style={styles.topright}>
               <Image style={styles.icon} source={{uri: `http://openweathermap.org/img/wn/${icon}@2x.png`}}/>
@@ -48,15 +48,10 @@ export default function Today() {
   }
 
   const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#265ebf',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     icon: {
         width: 150,
         height: 150,
+        marginBottom: 0
     },
     top: {
         flex: 1,
@@ -65,14 +60,25 @@ export default function Today() {
     topleft: {
         flex: 1,
         flexDirection: 'column',
-        marginLeft: 20
+        marginLeft: 20,
+        marginTop: 45
     },
     topright: {
         flex:1,
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        
     },
     text: {
-        color: 'white'
-    }
+        color: 'white',
+        fontSize: 20
+    },
+    textmain: {
+        color: 'white',
+        fontSize: 50
+    },
+    textmin: {
+        color: 'white',
+        fontSize: 30
+    },
   });
